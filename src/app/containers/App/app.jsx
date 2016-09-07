@@ -1,4 +1,4 @@
-import React,{ PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import Dashboard from '../Dashboard/dashboard';
 import Header from './header';
 

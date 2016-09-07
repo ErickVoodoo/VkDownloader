@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import { RaisedButton as MUIRaisedButton} from 'material-ui';
+import { RaisedButton as MUIRaisedButton } from 'material-ui';
 
 class RaisedButton extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     return nextProps.label !== this.props.label;
   }
 
