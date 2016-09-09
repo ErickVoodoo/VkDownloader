@@ -8,6 +8,10 @@ const stylelint = require('stylelint');
 const publicFolderName = '.public';
 const localhost = 'http://localhost:' + appPackage.devServerPort + '/';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 module.exports = {
   entry: [
     'webpack-dev-server/client?' + localhost,
@@ -23,6 +27,9 @@ module.exports = {
     publicPath: localhost,
     filename: 'application.js',
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
   module: {
     preLoaders: [
       {
@@ -35,9 +42,9 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: [
-          'react-hot-loader/webpack',
-          'babel',
+          'babel-loader',
         ],
+        exclude: /node_modules/,
         include: path.join(__dirname, 'src'),
       },
       {

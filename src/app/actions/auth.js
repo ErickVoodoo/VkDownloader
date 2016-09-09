@@ -7,7 +7,7 @@ export const loginPending = ({ username, password }) => ({
   payload: {
     username,
     password,
-  }
+  },
 });
 
 export const loginSuccess = (payload) => ({

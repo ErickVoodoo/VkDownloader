@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -8,6 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './app/containers/App/app';
 import Dashboard from './app/containers/Dashboard/dashboard';
 import { Main } from './app/constants';
+import configuredStore from './app/store/configuredStore';
 
 injectTapEventPlugin();
 
@@ -40,11 +42,13 @@ const kikkoTheme = getMuiTheme({
 function run() {
   ReactDOM.render(
     <MuiThemeProvider muiTheme={kikkoTheme}>
-      <Router history={browserHistory}>
-        <Router path="/" component={App}>
-          <Router path="dashboard" component={Dashboard} />
+      <Provider store={configuredStore}>
+        <Router history={browserHistory}>
+          <Router path="/" component={App}>
+            <Router path="dashboard" component={Dashboard} />
+          </Router>
         </Router>
-      </Router>
+      </Provider>
     </MuiThemeProvider>,
     document.getElementById('app')
   );

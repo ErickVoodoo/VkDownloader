@@ -15,6 +15,7 @@ class RaisedButton extends React.Component {
         labelStyle={{
           fontSize: 14,
         }}
+        onClick={this.props.onClick}
       />
     );
   }
@@ -24,6 +25,7 @@ RaisedButton.propTypes = {
   label: PropTypes.string,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export default RaisedButton;
