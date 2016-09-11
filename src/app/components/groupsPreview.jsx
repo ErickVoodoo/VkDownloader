@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import ToggleStarBorder from 'material-ui/svg-icons/toggle/star-border';
 import ToggleStar from 'material-ui/svg-icons/toggle/star';
+import _ from 'lodash';
 
 import { FlatButton } from './forms';
 import style from './styles.scss';
@@ -14,6 +15,10 @@ class GroupsPreview extends React.Component {
     this.state = {
       favorite: getFromLocalStorage('groups') && getFromLocalStorage('groups').includes(this.props.item.gid),
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return !_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState);
   }
 
   onChangeAddFavorite = () => {
