@@ -1,14 +1,13 @@
-import { blue500, blue100, orange500, orange800, grey400, grey300, grey100, grey800 } from 'material-ui/styles/colors';
+import { indigo700, indigo400, indigo200, orange500, grey600, grey400 } from 'material-ui/styles/colors';
 
 export default {
   COLOR: {
-    PRIMARY_1: grey300,
-    PRIMARY_2: grey100,
-    PRIMARY_3: grey800,
-    ACCENT: blue500,
-    ACCENT_LIGHT: blue100,
-    ACCENT_DANGER: orange500,
-    ACCENT_DANGER_TEXT: orange800,
+    PRIMARY_DARK: indigo700,
+    PRIMARY: indigo400,
+    PRIMARY_LIGHT: indigo200,
+    ACCENT: orange500,
+    PRIMARY_TEXT: '#fff',
+    SECONDARY_TEXT: grey600,
     DIVIDER: grey400,
   },
 };

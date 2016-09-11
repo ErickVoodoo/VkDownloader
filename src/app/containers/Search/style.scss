@@ -1,0 +1,19 @@
+.search {
+  width: 100%;
+
+  .form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @media only screen and (min-width: 800px) {
+      width: 80%;
+      margin-left: 10%;
+    }
+  }
+
+  .previews {
+    display: inline-block;
+  }
+}

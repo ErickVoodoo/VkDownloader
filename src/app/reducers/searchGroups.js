@@ -1,34 +1,34 @@
-import { LOGIN_PENDING, LOGIN_FAIL, LOGIN_SUCCESS } from '../actions/auth';
+import { SEARCH_PENDING, SEARCH_SUCCESS, SEARCH_FAIL } from '../actions/groups';
 
 const initialState = {
   loading: false,
   error: null,
-  auth: null,
+  groups: null,
 };
 
-export default function authReducer(state = initialState, action) {
+export default function searchGroupsReducer(state = initialState, action) {
   switch (action.type) {
-    case LOGIN_PENDING:
+    case SEARCH_PENDING:
       return {
         ...state,
         loading: true,
         error: null,
-        auth: null,
+        groups: null,
       };
 
-    case LOGIN_SUCCESS:
+    case SEARCH_SUCCESS:
       return {
         ...state,
         loading: false,
         error: null,
-        auth: action.payload,
+        groups: action.payload.groups,
       };
 
-    case LOGIN_FAIL:
+    case SEARCH_FAIL:
       return {
         ...state,
         loading: false,
-        auth: null,
+        groups: null,
         error: action.error,
       };
 

@@ -1,0 +1,16 @@
+module.exports = {
+  "port": 3000,
+  "files": ["./.public/**/*"],
+  "server": {
+    "baseDir": "./.public",
+    middleware: {
+      // overrides the second middleware default with new settings
+      1: require('connect-history-api-fallback')(
+        {
+          index: '/index.html',
+          verbose: true
+        }
+      )
+    }
+  }
+};

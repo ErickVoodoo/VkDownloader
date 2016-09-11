@@ -1,15 +1,20 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import createLogger from 'redux-logger';
 import reducers from '../reducers';
-import authSaga from '../middlewares/auth';
+import groupsSaga from '../middlewares/groups';
 
 const sagaMiddleware = createSagaMiddleware();
+const logger = createLogger();
 
 const store = createStore(
   reducers,
-  applyMiddleware(sagaMiddleware)
+  applyMiddleware(
+    logger,
+    sagaMiddleware
+  )
 );
 
-sagaMiddleware.run(authSaga);
+sagaMiddleware.run(groupsSaga);
 
 export default store;

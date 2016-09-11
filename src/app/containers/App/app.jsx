@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
-import Dashboard from '../Dashboard/dashboard';
 import Header from './header';
+import Footer from './footer';
+import style from './styles.scss';
 
 const App = ({ children }) => (
-  <div>
+  <div className={style.app}>
     <Header />
-    <div>
-      {children || <Dashboard />}
+    <div className={style.content}>
+      {children}
     </div>
-    Footer
+    <Footer />
   </div>
 );
 

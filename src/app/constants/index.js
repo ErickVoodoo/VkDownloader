@@ -1,7 +1,7 @@
 import Main from './main';
-import Params from './params';
+import Api from './api';
 
 export {
   Main,
-  Params,
+  Api,
 };

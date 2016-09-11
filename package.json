@@ -2,10 +2,10 @@
   "name": "downloader",
   "version": "1.0.0",
   "description": "Hello world",
-  "devServerPort": "8080",
-  "main": "index.js",
+  "devServerPort": "8085",
+  "main": "index.jsx",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.config.js --progress --colors --port 8080",
+    "start": "webpack-dev-server --config webpack.dev.config.js --hot --progress --colors --port 8085",
     "eslint": "eslint src --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -40,6 +40,7 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^6.2.0",
+    "html-webpack-plugin": "^2.22.0",
     "postcss-loader": "^0.11.1",
     "postcss-scss": "^0.2.1",
     "precss": "^1.4.0",
@@ -48,8 +49,8 @@
     "style-loader": "^0.13.1",
     "stylelint": "^7.2.0",
     "stylelint-config-standard": "^13.0.0",
-    "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "webpack": "^1.12.15",
+    "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
     "material-ui": "^0.15.4",
@@ -60,6 +61,7 @@
     "react-router": "^2.7.0",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
     "redux-saga": "^0.11.1"
   }
 }

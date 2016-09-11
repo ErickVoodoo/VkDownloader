@@ -1,0 +1,39 @@
+.groupsPreview {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  padding: 0 8px 8px 0;
+
+  .favorite {
+    position: absolute;
+    top: 0;
+    right: 8px;
+  }
+
+  .content {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 8px;
+    background: white;
+    opacity: 0.9;
+    padding: 4px;
+    box-sizing: border-box;
+
+    > * {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .name {
+      font-size: 18px;
+    }
+
+    .link {
+      margin-top: 4px;
+      font-size: 14px;
+    }
+  }
+}
