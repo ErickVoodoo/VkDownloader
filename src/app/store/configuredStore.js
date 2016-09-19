@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import reducers from '../reducers';
-import groupsSaga from '../middlewares/groups';
+import { searchGroupsSaga, favoriteGroupsSaga } from '../middlewares/groups';
 
 const sagaMiddleware = createSagaMiddleware();
 const logger = createLogger();
@@ -15,6 +15,7 @@ const store = createStore(
   )
 );
 
-sagaMiddleware.run(groupsSaga);
+sagaMiddleware.run(searchGroupsSaga);
+sagaMiddleware.run(favoriteGroupsSaga);
 
 export default store;

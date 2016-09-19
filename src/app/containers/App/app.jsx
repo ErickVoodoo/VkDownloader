@@ -3,9 +3,9 @@ import Header from './header';
 import Footer from './footer';
 import style from './styles.scss';
 
-const App = ({ children }) => (
+const App = ({ children, location }) => (
   <div className={style.app}>
-    <Header />
+    <Header location={location} />
     <div className={style.content}>
       {children}
     </div>
@@ -15,6 +15,7 @@ const App = ({ children }) => (
 
 App.propTypes = {
   children: PropTypes.element,
+  location: PropTypes.object,
 };
 
 export default App;

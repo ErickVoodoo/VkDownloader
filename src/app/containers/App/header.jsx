@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Tabs, Tab } from 'material-ui';
 import ActionDashboard from 'material-ui/svg-icons/action/dashboard';
 import ActionSearch from 'material-ui/svg-icons/action/search';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import { browserHistory } from 'react-router';
 
 import styles from './styles.scss';
@@ -9,6 +10,7 @@ import { Main } from '../../constants';
 
 const TABS = [
   'dashboard',
+  'favorite',
   'search',
 ];
 
@@ -16,7 +18,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: TABS[0],
+      value: TABS[TABS.indexOf(this.props.location.pathname.substr(1))],
     };
   }
 
@@ -48,8 +50,13 @@ class Header extends React.Component {
             icon={<ActionDashboard />}
           />
           <Tab
-            label="Search"
+            label="Favorite"
             value={TABS[1]}
+            icon={<ActionFavorite />}
+          />
+          <Tab
+            label="Search"
+            value={TABS[2]}
             icon={<ActionSearch />}
           />
         </Tabs>
@@ -57,5 +64,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  location: PropTypes.object,
+};
 
 export default Header;

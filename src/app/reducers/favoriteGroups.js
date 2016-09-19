@@ -1,4 +1,4 @@
-import { SEARCH_PENDING, SEARCH_SUCCESS, SEARCH_FAIL } from '../actions/groups';
+import { FAVORITE_PENDING, FAVORITE_SUCCESS, FAVORITE_FAIL } from '../actions/favorite';
 
 const initialState = {
   loading: false,
@@ -6,30 +6,28 @@ const initialState = {
   error: null,
 };
 
-export default function searchGroupsReducer(state = initialState, action) {
+export default function favoriteGroupsReducer(state = initialState, action) {
   switch (action.type) {
-    case SEARCH_PENDING:
+    case FAVORITE_PENDING:
       return {
         ...state,
         loading: true,
         error: null,
-        groups: null,
       };
 
-    case SEARCH_SUCCESS:
+    case FAVORITE_SUCCESS:
       return {
         ...state,
         loading: false,
-        error: null,
         groups: action.payload.groups,
+        error: null,
       };
 
-    case SEARCH_FAIL:
+    case FAVORITE_FAIL:
       return {
         ...state,
         loading: false,
-        groups: null,
-        error: action.error,
+        error: action.payload,
       };
 
     default:

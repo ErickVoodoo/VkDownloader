@@ -3,4 +3,7 @@ const ACCESS_TOKEN = '64f11409bba298feec0a2e6e45b7fec572777af48c060027d3c1e215fe
 export const vkSearchGroups = (search) =>
   `https://api.vk.com/method/groups.search?q=${search}&access_token=${ACCESS_TOKEN}&count=100`;
 
+export const vsGetGroups = (ids) =>
+  `https://api.vk.com/method/groups.getById?group_ids=${ids}&access_token=${ACCESS_TOKEN}`;
+
 export const vkGetPosts = () => '';

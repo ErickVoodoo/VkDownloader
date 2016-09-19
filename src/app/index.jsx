@@ -9,6 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './containers/App/app';
 import Dashboard from './containers/Dashboard/dashboard';
 import Search from './containers/Search';
+import Favorite from './containers/Favorite';
 import { Main } from './constants';
 import configuredStore from './store/configuredStore';
 
@@ -47,6 +48,7 @@ function run() {
         <Router history={browserHistory}>
           <Route path="/" component={App}>
             <Route path="dashboard" component={Dashboard} />
+            <Route path="favorite" component={Favorite} />
             <Route path="search" component={Search} />
             <IndexRoute component={Dashboard} />
           </Route>
