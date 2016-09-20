@@ -7,7 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import App from './containers/App/app';
-import Dashboard from './containers/Dashboard/dashboard';
+import Dashboard from './containers/Dashboard';
 import Search from './containers/Search';
 import Favorite from './containers/Favorite';
 import { Main } from './constants';
