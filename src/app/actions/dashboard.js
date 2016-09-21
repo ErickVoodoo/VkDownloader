@@ -7,7 +7,7 @@ export const dashboardPending = ({ groups }) => ({
   type: DASHBOARD_PENDING,
   payload: {
     groups,
-  }
+  },
 });
 
 export const dashboardSuccess = ({ posts }) => ({

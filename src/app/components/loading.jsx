@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { CircularProgress } from 'material-ui';
-
+import { RaisedButton } from './forms';
 import { Main } from '../constants';
 
-const Loading = ({ title, size = 0.8, opacity = 0 }) => (
-  <div
+const Loading = ({ title, size = 0.8, opacity = 0, loading, error, onReload }) => (
+  loading || error ? <div
     style={{
       width: '100%',
       height: '100%',
@@ -14,8 +14,7 @@ const Loading = ({ title, size = 0.8, opacity = 0 }) => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      top: 0,
-      left: 0,
+      flexDirection: 'column',
     }}
   >
     <CircularProgress
@@ -29,13 +28,25 @@ const Loading = ({ title, size = 0.8, opacity = 0 }) => (
     >
       {title}
     </span>
-  </div>
+    { error &&
+      <div>
+        <span>
+          {JSON.stringify(error)}
+        </span>
+        <RaisedButton onClick={onReload} label="Reload" />
+      </div>
+    }
+  </div> :
+  null
 );
 
 Loading.propTypes = {
   title: PropTypes.string,
   size: PropTypes.number,
   opacity: PropTypes.number,
+  loading: PropTypes.bool,
+  onReload: PropTypes.func,
+  error: PropTypes.string,
 };
 
 export default Loading;

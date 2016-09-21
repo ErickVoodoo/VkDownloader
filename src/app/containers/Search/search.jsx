@@ -51,7 +51,12 @@ class Search extends React.Component {
               />
           )}
         </div>
-        {this.props.searchGroupsReducer.loading && <Loading opacity={0.4} />}
+        <Loading
+          opacity={0.4}
+          loading={this.props.searchGroupsReducer.loading}
+          error={this.props.searchGroupsReducer.error}
+          onReload={this.onClickSearch}
+        />
       </div>
     );
   }

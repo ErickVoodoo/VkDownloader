@@ -18,7 +18,7 @@ export default function dashboardGroupsReducer(state = initialState, action) {
     case DASHBOARD_SUCCESS: {
       const { posts } = action.payload;
       const newPosts = [...state.posts || [], ...posts.slice(1)];
-      newPosts.sort(() => Math.random() - 0.5);
+      // newPosts.sort(() => Math.random() - 0.5);
       return {
         ...state,
         loading: false,

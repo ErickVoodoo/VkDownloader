@@ -5,8 +5,12 @@ import style from './style.scss';
 
 class Favorite extends React.Component {
   componentDidMount() {
-    this.props.favoritePending({ groups: getFromLocalStorage('groups') });
+    this.onReload();
   }
+
+  onReload = () => {
+    this.props.favoritePending({ groups: getFromLocalStorage('groups') });
+  };
 
   render() {
     return (
@@ -21,7 +25,12 @@ class Favorite extends React.Component {
               />
           )}
         </div>
-        {this.props.favoriteGroupsReducer.loading && <Loading opacity={0.4} />}
+        <Loading
+          opacity={0.4}
+          loading={this.props.favoriteGroupsReducer.loading}
+          error={this.props.favoriteGroupsReducer.error}
+          onReload={this.onReload}
+        />
       </div>
     );
   }
