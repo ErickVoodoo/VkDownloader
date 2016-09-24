@@ -12,7 +12,7 @@ export default function dashboardGroupsReducer(state = initialState, action) {
       return {
         ...state,
         loading: true,
-        errod: null,
+        error: null,
       };
 
     case DASHBOARD_SUCCESS: {
@@ -31,7 +31,7 @@ export default function dashboardGroupsReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: action.error,
       };
 
     case DASHBOARD_CLEAR:

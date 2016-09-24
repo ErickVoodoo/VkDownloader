@@ -66,6 +66,9 @@ class Dashboard extends React.Component {
                 <Post
                   key={index}
                   item={item}
+                  audioReducer={this.props.audioReducer}
+                  playAudio={this.props.playAudio}
+                  pauseAudio={this.props.pauseAudio}
                 />
             )}
           </div>
@@ -85,6 +88,10 @@ Dashboard.propTypes = {
   dashboardGroupsReducer: PropTypes.object,
   dashboardPending: PropTypes.func.isRequired,
   dashboardClear: PropTypes.func.isRequired,
+
+  audioReducer: PropTypes.object.isRequired,
+  playAudio: PropTypes.func.isRequired,
+  pauseAudio: PropTypes.func.isRequired,
 };
 
 export default Dashboard;

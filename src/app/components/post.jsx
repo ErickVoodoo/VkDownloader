@@ -1,4 +1,7 @@
 import React, { PropTypes } from 'react';
+import ActionFavoriteBorder from 'material-ui/svg-icons/Action/favorite-border';
+
+import { Audio } from './vk';
 import style from './styles.scss';
 
 class Post extends React.Component {
@@ -7,11 +10,13 @@ class Post extends React.Component {
 
     this.state = {
       activeIndex: 1,
-      attachmentsPhotos: this.props.item.attachments ? this.props.item.attachments.map((item, index) => {
+      attachmentsPhotos: !!this.props.item.attachments && this.props.item.attachments.map((item, index) => {
         const newItem = item;
         newItem.index = index;
         return newItem;
-      }).filter((item) => item.type === 'photo' || (item.type === 'doc' && item.doc.ext === 'gif')) : null,
+      }).filter((item) => item.type === 'photo' || (item.type === 'doc' && item.doc.ext === 'gif')),
+      attachmentsAudios: !!this.props.item.attachments &&
+        this.props.item.attachments.filter((item) => item.type === 'audio').map((item) => item.audio),
     };
   }
 
@@ -44,7 +49,12 @@ class Post extends React.Component {
     const { item } = this.props;
     return (
       <div className={style.post}>
-        <div dangerouslySetInnerHTML={{ __html: item.text }} />
+        <div
+          style={{
+            padding: '4px',
+          }}
+          dangerouslySetInnerHTML={{ __html: item.text }}
+        />
         <div
           className={style.attachment}
         >
@@ -62,6 +72,11 @@ class Post extends React.Component {
             { this.state.attachmentsPhotos.length > 1 &&
               <span
                 className={style.attachmentsCount}
+                style={{
+                  background: 'rgba(182, 182, 182, 1)',
+                  opacity: 0.9,
+                  margin: '0 20px',
+                }}
               >
                 {`${this.state.activeIndex}/${this.state.attachmentsPhotos.length}`}
               </span>
@@ -86,6 +101,37 @@ class Post extends React.Component {
             </div>
           }
         </div>
+        <div>
+          {this.state.attachmentsAudios.map((itm, index) =>
+            <Audio
+              key={index}
+              audioIndex={index}
+              audioList={this.state.attachmentsAudios}
+              audioReducer={this.props.audioReducer}
+              playAudio={this.props.playAudio}
+              pauseAudio={this.props.pauseAudio}
+            />
+          )}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderTop: '0.5px solid gray',
+            opacity: 0.6,
+            padding: '4px',
+          }}
+        >
+          <ActionFavoriteBorder />
+          <span
+            style={{
+              paddingLeft: '8px',
+            }}
+          >
+            {!!item.likes && item.likes.count}
+          </span>
+        </div>
       </div>
     );
   }
@@ -93,10 +139,9 @@ class Post extends React.Component {
 
 Post.propTypes = {
   item: PropTypes.object.isRequired,
+  audioReducer: PropTypes.object.isRequired,
+  playAudio: PropTypes.func.isRequired,
+  pauseAudio: PropTypes.func.isRequired,
 };
 
 export default Post;
-
-// {item.attachments && item.attachments.map((itm, index) =>
-//
-// )}

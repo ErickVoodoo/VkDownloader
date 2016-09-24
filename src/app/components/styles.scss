@@ -41,7 +41,6 @@
 
 .post {
   background: #eee;
-  cursor: pointer;
   box-sizing: inherit;
   display: block;
   left: auto;
@@ -69,7 +68,7 @@
       position: absolute;
       width: 20px;
       height: 50px;
-      background: #e6e6e6;
+      background: rgba(182, 182, 182, 1);
       opacity: 0.6;
       display: flex;
       justify-content: center;

@@ -13,7 +13,9 @@ export function* searchGroupsSaga(action) {
       const searchedGroups = yield axios.get(`https://crossorigin.me/${vkSearchGroups(search)}`);
       yield put(searchSuccess({ groups: searchedGroups.data.response }));
     } catch (e) {
-      yield put(searchFail(e));
+      yield put(searchFail(
+        e.response ? { status: e.response.status, message: e.message } : { status: 520, message: 'Unknown' }
+      ));
     }
   });
 }
@@ -25,7 +27,9 @@ export function* favoriteGroupsSaga(action) {
       const favoriteGroups = yield axios.get(`https://crossorigin.me/${vkGetGroups(groups.join(','))}`);
       yield put(favoriteSuccess({ groups: favoriteGroups.data.response }));
     } catch (e) {
-      yield put(favoriteFail(e));
+      yield put(favoriteFail(
+        e.response ? { status: e.response.status, message: e.message } : { status: 520, message: 'Unknown' }
+      ));
     }
   });
 }
@@ -39,7 +43,9 @@ export function* dashboardGroupsSaga(action) {
         yield put(dashboardSuccess({ posts: dashboardPost.data.response }));
       }
     } catch (e) {
-      yield put(dashboardFail(e));
+      yield put(dashboardFail(
+        e.response ? { status: e.response.status, message: e.message } : { status: 520, message: 'Unknown' }
+      ));
     }
   });
 }

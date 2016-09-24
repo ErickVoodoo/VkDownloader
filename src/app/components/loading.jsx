@@ -14,13 +14,14 @@ const Loading = ({ title, size = 0.8, opacity = 0, loading, error, onReload }) =
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'column',
+      top: 0,
+      left: 0,
     }}
   >
-    <CircularProgress
+    {(!!loading || !error) && <CircularProgress
       size={size}
       color={Main.COLOR.ACCENT_DANGER}
-    />
+    />}
     <span
       style={{
         marginLeft: '16px',
@@ -29,9 +30,21 @@ const Loading = ({ title, size = 0.8, opacity = 0, loading, error, onReload }) =
       {title}
     </span>
     { error &&
-      <div>
-        <span>
-          {JSON.stringify(error)}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
+        <span
+          style={{
+            fontSize: '16px',
+            marginBottom: '16px',
+          }}
+        >
+          {`Status: ${error.status}`} <br />
+          {`Message: ${error.message}`}
         </span>
         <RaisedButton onClick={onReload} label="Reload" />
       </div>
@@ -46,7 +59,10 @@ Loading.propTypes = {
   opacity: PropTypes.number,
   loading: PropTypes.bool,
   onReload: PropTypes.func,
-  error: PropTypes.string,
+  error: PropTypes.shape({
+    status: PropTypes.number,
+    message: PropTypes.string,
+  }),
 };
 
 export default Loading;

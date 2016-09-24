@@ -7,7 +7,7 @@ const FlatButton =
   (
     {
       children, style, label, title, containerElement, secondary,
-      primary, href, onClick, onTouchTap, icon, accent,
+      primary, href, onClick, onTouchTap, icon, accent, disabled
     }
   ) => (
     <MUIFlatButton
@@ -18,6 +18,7 @@ const FlatButton =
       }}
       label={label}
       title={title}
+      disabled={disabled}
       labelStyle={{
         fontSize: 14,
         padding: icon || children ? '0 16px 0 8px' : '0 8px 0 8px',
@@ -47,6 +48,7 @@ FlatButton.propTypes = {
   onClick: PropTypes.func,
   onTouchTap: PropTypes.func,
   icon: PropTypes.element,
+  disabled: PropTypes.bool,
 };
 
 export default FlatButton;
