@@ -7,7 +7,7 @@ const FlatButton =
   (
     {
       children, style, label, title, containerElement, secondary,
-      primary, href, onClick, onTouchTap, icon, accent, disabled
+      primary, href, onClick, onTouchTap, icon, accent, disabled,
     }
   ) => (
     <MUIFlatButton

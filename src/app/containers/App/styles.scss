@@ -30,4 +30,16 @@
   width: 100%;
   padding: 16px;
   box-sizing: border-box;
+
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.volume {
+  > div {
+    margin: 0 !important;
+  }
 }

@@ -46,7 +46,7 @@ class Audio extends Component {
         { !!this.props.audioReducer.list &&
           (this.props.audioList[this.props.audioIndex].aid ===
             this.props.audioReducer.list[this.props.audioReducer.index].aid
-            && this.props.audioReducer.status === 'play')?
+            && this.props.audioReducer.status === 'play') ?
           <AvPause /> : <AvPlayArrow />
         }
         </FlatButton>
