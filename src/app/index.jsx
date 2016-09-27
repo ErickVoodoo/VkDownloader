@@ -10,6 +10,7 @@ import App from './containers/App';
 import Dashboard from './containers/Dashboard';
 import Search from './containers/Search';
 import Favorite from './containers/Favorite';
+import Test from './containers/Test/test';
 import { Main } from './constants';
 import configuredStore from './store/configuredStore';
 
@@ -50,6 +51,7 @@ function run() {
             <Route path="dashboard" component={Dashboard} />
             <Route path="favorite" component={Favorite} />
             <Route path="search" component={Search} />
+            <Route path="test" component={Test} />
             <IndexRoute component={Dashboard} />
           </Route>
         </Router>
