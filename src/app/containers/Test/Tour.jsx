@@ -24,6 +24,24 @@ const checkAndFixElementAttributes = (element) => {
   return fixedElement;
 };
 
+const unfade = (element) => {
+  const el = element;
+  let op = 0.1;
+  let left = 54;
+  el.style.display = 'block';
+  el.style.left = -left;
+  const timer = setInterval(() => {
+    if (op >= 1) {
+      clearInterval(timer);
+    }
+    el.style.opacity = op;
+    el.style.left = -left;
+    el.style.filter = `alpha(opacity=${op * 100})`;
+    op += op * 0.1;
+    left -= 2;
+  }, 10);
+};
+
 const createEmptyDiv = ({ id = '', type = 'div', appendTo = divIDS.main, style = {} }) => {
   const block = document.createElement(type);
   block.id = id;
@@ -42,9 +60,12 @@ const createHint = ({ id, content, position, onClickNextStep, nextButton }) => {
       marginLeft: `calc(${((position[0]) * 100) / window.innerWidth}% - 32px)`,
       top: position[1] - 32,
       background: 'white',
-      zIndex: 101,
+      zIndex: 12,
+      opacity: 0,
     },
   });
+
+  unfade(document.getElementById(id));
 
   ReactDOM.render(
     <div
@@ -93,7 +114,7 @@ class Shape extends React.Component {
     createEmptyDiv({
       id: divIDS.shadow,
       style: {
-        position: 'absolute',
+        position: 'fixed',
         width: '100%',
         height: '100%',
         background: '#000',
@@ -105,12 +126,12 @@ class Shape extends React.Component {
     createEmptyDiv({
       id: divIDS.closeButton,
       style: {
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
         textAlign: 'center',
         right: 0,
         left: 0,
-        zIndex: 11,
+        zIndex: 13,
         marginBottom: 40,
       },
     });
@@ -142,10 +163,10 @@ class Shape extends React.Component {
     const divElement = document.getElementById(element.id);
     if (divElement) {
       this.clearModalAndDropZindex();
-      divElement.style.zIndex = 100;
+      divElement.style.zIndex = 11;
       const { offsetLeft, offsetTop } = divElement;
       createHint({
-        id: `${element.id}-alert`,
+        id: `${element.id}-hint`,
         content: element.content,
         position: [
           offsetLeft - element.position[0],
