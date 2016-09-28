@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import ActionFavoriteBorder from 'material-ui/svg-icons/Action/favorite-border';
+import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 import { Audio } from './vk';
 import style from './styles.scss';

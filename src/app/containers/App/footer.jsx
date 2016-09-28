@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import AvPlayArrow from 'material-ui/svg-icons/Av/play-arrow';
-import AvPause from 'material-ui/svg-icons/Av/pause';
-import AvSkipNext from 'material-ui/svg-icons/Av/skip-next';
-import AvSkipPrevious from 'material-ui/svg-icons/Av/skip-previous';
+import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import AvPause from 'material-ui/svg-icons/av/pause';
+import AvSkipNext from 'material-ui/svg-icons/av/skip-next';
+import AvSkipPrevious from 'material-ui/svg-icons/av/skip-previous';
 import { Slider } from 'material-ui';
 import { FlatButton } from '../../components/forms';
 import style from './styles.scss';

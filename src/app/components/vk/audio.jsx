@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import AvPlayArrow from 'material-ui/svg-icons/Av/play-arrow';
-import AvPause from 'material-ui/svg-icons/Av/pause';
+import AvPlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import AvPause from 'material-ui/svg-icons/av/pause';
 import _ from 'lodash';
 import { FlatButton } from '../forms';
 import style from './styles.scss';
